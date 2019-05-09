@@ -1,0 +1,11 @@
+{
+  "port": 1889,
+  "users": [
+    {
+      "user": "wooyme",
+      "pass": "11241124",
+      "multiple": -1,
+      "limit": -1
+    }
+  ]
+}

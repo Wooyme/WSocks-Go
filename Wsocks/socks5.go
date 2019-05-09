@@ -81,13 +81,13 @@ func (s *Socks) Listen(){
 					continue
 				}
 				success:=[]byte{0x05,0x00,0x00,0x01,0x00,0x00,0x00,0x00,0x00,0x00}
-				request.conn.Write(success)
+				_, _ = request.conn.Write(success)
 				go func() {
 					p:=make([]byte,1024)
 					for{
 						_len,err:=request.bufConn.Read(p)
 						if err != nil {
-							request.conn.Close()
+							_ = request.conn.Close()
 							//s.buf<-s.myData.CreateException(uuid,"")
 							lock.Lock()
 							delete(s.connMap,uuid)
@@ -100,26 +100,26 @@ func (s *Socks) Listen(){
 			case RAW:
 				raw:=s.myData.ParseRaw(_bytes[4:])
 				lock.RLock()
-				req:=s.connMap[raw.uuid]
+				req:=s.connMap[raw.Uuid]
 				lock.RUnlock()
 				if req ==nil {
 					continue
 				}
-				req.conn.Write(raw.data)
+				_, _ = req.conn.Write(raw.Data)
 			case EXCEPTION:
 				exception:=s.myData.ParseException(_bytes[4:])
 				if exception == nil {
 					continue
 				}
 				lock.RLock()
-				req := s.connMap[exception.uuid]
+				req := s.connMap[exception.Uuid]
 				lock.RUnlock()
 				if req==nil {
 					continue
 				}
-				req.conn.Close()
+				_ = req.conn.Close()
 				lock.Lock()
-				delete(s.connMap,exception.uuid)
+				delete(s.connMap,exception.Uuid)
 				lock.Unlock()
 			}
 		}
@@ -146,7 +146,7 @@ func (s *Socks) serveConn(conn net.Conn){
 		fmt.Printf("[ERR] socks: Unsupported SOCKS version: %v", version)
 		return
 	}
-	readMethods(bufConn)
+	_, _ = readMethods(bufConn)
 	_, err := conn.Write([]byte{socks5Version, uint8(0)})
 	request, err := NewRequest(bufConn)
 	if err!=nil {
@@ -256,7 +256,7 @@ func (s *Socks) handleRequest(req *Request, conn net.Conn){
 		s.handleConnect(conn, req)
 		return
 	default:
-		conn.Close()
+		_ = conn.Close()
 		fmt.Printf("Unavaliable request command")
 		return
 	}

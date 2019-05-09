@@ -20,19 +20,19 @@ const (
 )
 
 type ClientConnect struct {
-	uuid string
-	host string
-	port uint32
+	Uuid string
+	Host string
+	Port uint32
 }
 
 type Exception struct {
-	uuid string
-	message string
+	Uuid string
+	Message string
 }
 
 type Raw struct {
-	uuid string
-	data []byte
+	Uuid string
+	Data []byte
 }
 
 func NewData(_aes Aes) Data{
@@ -97,5 +97,5 @@ func (d *Data) ParseRaw(data []byte) Raw {
 	uuidLen:=binary.LittleEndian.Uint32(decrypted)
 	uuid:=string(decrypted[4:4+uuidLen])
 	_data:=decrypted[4+uuidLen:]
-	return Raw{uuid:uuid,data:_data}
+	return Raw{Uuid:uuid,Data:_data}
 }
