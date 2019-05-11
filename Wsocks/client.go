@@ -46,6 +46,8 @@ func (c *Client) Start(){
 			if err!=nil {
 				fmt.Printf("Connection closed,Err: %v \n",err)
 				c.Log+=fmt.Sprintf("Connection closed,Err: %v \n",err)
+				c.State = "Waiting"
+				TrayState.SetTitle(c.State)
 				return
 			}
 			if mst == websocket.BinaryMessage {
@@ -84,6 +86,8 @@ func (c *Client) EditRemote(host,user,pass string){
 			mst,message,err:=ws.ReadMessage()
 			if err!=nil {
 				fmt.Printf("Connection closed,Err: %v \n",err)
+				c.State = "Waiting"
+				TrayState.SetTitle(c.State)
 				c.Log+=fmt.Sprintf("Connection closed,Err: %v \n",err)
 				return
 			}
@@ -107,6 +111,7 @@ func (c *Client) connect() *websocket.Conn{
 		return nil
 	}
 	c.State = "Connected"
+	TrayState.SetTitle(fmt.Sprintf("%v,%v",c.host,c.State))
 	fmt.Println("Connected to remote server")
 	return conn
 }

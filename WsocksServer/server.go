@@ -68,20 +68,25 @@ func ReadServerFromFile(filename string) *Server{
 }
 
 func (s *Server) Start(){
-	addr := flag.String("addr", "localhost:"+strconv.Itoa(s.info.Port), "http service address")
+	addr := flag.String("addr", "0.0.0.0:"+strconv.Itoa(s.info.Port), "http service address")
 	flag.Parse()
 	log.SetFlags(0)
-	http.HandleFunc("/echo", s.echo)
+	http.HandleFunc("/", s.echo)
 	log.Fatal(http.ListenAndServe(*addr, nil))
 }
 
 func (s *Server) echo(w http.ResponseWriter, r *http.Request) {
-	auth:=r.Header.Get("Auth")
-	user:= s.authMap[auth]
-	if user == nil {
-		http.Error(w, http.StatusText(300), 300)
-		return
+	var user *User = nil
+	for k:=range r.Header {
+		if user=s.authMap[r.Header.Get(k)]; user!=nil {
+			goto SUCCESS
+		}
 	}
+	http.Error(w, http.StatusText(300), 300)
+	return
+	SUCCESS:
+
+	fmt.Printf("Login successfully,%v \n",user.User)
 	c, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Print("upgrade:", err)
@@ -117,6 +122,8 @@ func (s *Server) echo(w http.ResponseWriter, r *http.Request) {
 			handleException(wsChan,parser,parser.ParseException(message[4:]))
 		case DNS:
 			handleDnsQuery(wsChan,parser,parser.ParseDnsQuery(message[4:]))
+		default:
+			fmt.Printf("Unknown flag %v \n",_flag)
 		}
 	}
 }
@@ -133,10 +140,9 @@ func handleConnect(c chan []byte,parser Data,data *ClientConnect){
 		defer delete(connMap,data.Uuid)
 		defer conn.Close()
 		for {
-			_bytes:=make([]byte,2048)
+			_bytes:=make([]byte,4096)
 			ln,err:=conn.Read(_bytes)
 			if err != nil {
-				fmt.Printf("Err %v \n",err)
 				return
 			}
 			c<-parser.CreateRaw(data.Uuid,_bytes[:ln])
@@ -168,7 +174,7 @@ func handleDnsQuery(c chan []byte,parser Data,data *DnsQuery) {
 	if data == nil { return }
 	ips, err := net.LookupIP(data.Host)
 	if err != nil {
-		_, _ = fmt.Fprintf(os.Stderr, "Could not get IPs: %v\n", err)
+		_, _ = fmt.Printf("Could not get IPs: %v\n", err)
 		c<-parser.CreateDnsQuery(data.Uuid,"0.0.0.0")
 		return
 	}

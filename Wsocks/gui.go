@@ -22,7 +22,7 @@ type Configuration struct {
 
 var configs = make([]Configuration, 0)
 var client *Client = nil
-
+var TrayState *systray.MenuItem = nil
 func Tray() {
 	localConfigServer()
 	systray.Run(func() {
@@ -32,6 +32,7 @@ func Tray() {
 		}
 		systray.SetIcon(icon)
 		systray.SetTitle("Wsocks-Go")
+		TrayState = systray.AddMenuItem("Waiting","State")
 		mEdit := systray.AddMenuItem("Edit", "Edit configuration")
 		mQuit := systray.AddMenuItem("Quit", "Quit the whole app")
 		go func() {
@@ -91,11 +92,12 @@ func openBrowser(url string) {
 
 func localConfigServer() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		state:="No Action"
+		state:="Waiting"
 		_log:=""
 		if client!=nil {
 			state = client.State
 			_log = client.Log
+
 		}
 		if host, ok := r.URL.Query()["host"]; ok && len(host) > 0 {
 			fmt.Printf("Value: %v \n", host[0])
@@ -117,9 +119,30 @@ func localConfigServer() {
 				log.Fatal("Cannot encode to JSON ", err)
 			}
 			_, _ = f.Write(configJson)
+			f.Close()
 			state="Saved"
 		}
-		if config, ok := r.URL.Query()["config"]; ok && len(config) > 0 {
+		if del,ok:=r.URL.Query()["delete"]; ok && len(del) >0 {
+			config, _ := r.URL.Query()["config"]
+			fmt.Printf("Config: %v \n", config)
+			i, _ := strconv.Atoi(config[0])
+			configs = append(configs[:i], configs[i+1:]...)
+			_user, _ := user2.Current()
+			f, err := os.Create(filepath.Join(_user.HomeDir, ".wsocks/", "config.json"))
+			if err != nil {
+				fmt.Printf("Err: %v \n", err)
+				return
+			}
+			configJson, err := json.Marshal(configs)
+			if err != nil {
+				log.Fatal("Cannot encode to JSON ", err)
+			}
+			_, _ = f.Write(configJson)
+			f.Close()
+			state="Saved"
+		}
+		if confirm,ok:=r.URL.Query()["confirm"]; ok && len(confirm)>0 {
+			config, _ := r.URL.Query()["config"]
 			fmt.Printf("Config: %v \n", config)
 			i, _ := strconv.Atoi(config[0])
 			if client == nil {
@@ -130,13 +153,16 @@ func localConfigServer() {
 			}
 			state=fmt.Sprintf("Current configuration is: %v:%v@%v, Connecting...", configs[i].User, configs[i].Pass, configs[i].Host)
 		}
+
 		var str = ""
 		for i := 0; i < len(configs); i++ {
 			str += fmt.Sprintf("<option value=\"%v\">%v:%v@%v</option>", i, configs[i].User, configs[i].Pass, configs[i].Host)
 		}
 		fmt.Fprint(w, fmt.Sprintf(`
 			<html>
-			<head></head>
+			<head>
+				<title>Wsocks-Go Configuration</title>
+			</head>
 			<body>
 				<div>
 				State: %v
@@ -149,7 +175,7 @@ func localConfigServer() {
 							%v
 						</select>
 					</div>
-					<div><input type="submit" value="Confirm"></div>
+					<div><input type="submit" name="confirm" value="Confirm"><input type="submit" name="delete" value="Delete"></div>
 				</form>
 				<form action="/">
 				<div><label>Host:</label><input type="text" name="host"></div>
