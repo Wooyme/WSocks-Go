@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8a05c9d-a4a5-47f0-bca1-51fa14e2b18a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/WsocksKcp/FakeTcp.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wsocks/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/Wsocks/client.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wsocks/gui.go" beforeDir="false" afterPath="$PROJECT_DIR$/Wsocks/gui.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WsocksServer/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/WsocksServer/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wsocks_windows" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,11 +14,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.go">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WsocksKcp/KcpClient.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+            <state relative-caret-position="272">
+              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+              <folding>
+                <element signature="e#19#64#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WsocksKcp/FakeTcp.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+              <folding>
+                <element signature="e#19#96#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -30,7 +41,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wsocks/gui.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
+            <state relative-caret-position="2584">
               <caret line="164" column="19" selection-start-line="164" selection-start-column="19" selection-end-line="164" selection-end-column="19" />
             </state>
           </provider>
@@ -40,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/WsocksServer/server.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2924">
-              <caret line="186" lean-forward="true" selection-start-line="186" selection-end-line="186" />
+              <caret line="186" selection-start-line="186" selection-end-line="186" />
             </state>
           </provider>
         </entry>
@@ -86,6 +97,8 @@
         <option value="$PROJECT_DIR$/Wsocks/gui.go" />
         <option value="$PROJECT_DIR$/WsocksServer/server.go" />
         <option value="$PROJECT_DIR$/main.go" />
+        <option value="$PROJECT_DIR$/WsocksKcp/KcpClient.go" />
+        <option value="$PROJECT_DIR$/WsocksKcp/FakeTcp.go" />
       </list>
     </option>
   </component>
@@ -99,7 +112,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -110,17 +122,13 @@
             <path>
               <item name="WSocks-Go" type="b2602c69:ProjectViewProjectNode" />
               <item name="WSocks-Go" type="462c0819:PsiDirectoryNode" />
-              <item name="Wsocks" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WSocks-Go" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WSocks-Go" type="462c0819:PsiDirectoryNode" />
-              <item name="WsocksServer" type="462c0819:PsiDirectoryNode" />
+              <item name="WsocksKcp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -191,7 +199,7 @@
     <frame x="1920" y="0" width="1366" height="726" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24051593" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2518968" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -203,7 +211,7 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924472" weight="0.32998326" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49924472" visible="true" weight="0.52348995" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49924472" weight="0.52516776" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007553" side_tool="true" weight="0.52684563" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -216,16 +224,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../github.com/armon/go-socks5/auth.go" />
-    <entry file="file://$PROJECT_DIR$/../../../go1.11.1.linux-amd64/go/src/builtin/builtin.go" />
-    <entry file="file://$PROJECT_DIR$/../github.com/armon/go-socks5/request.go" />
-    <entry file="file://$PROJECT_DIR$/../../../go1.11.1.linux-amd64/go/src/io/io.go" />
-    <entry file="file://$PROJECT_DIR$/../github.com/armon/go-socks5/socks5.go" />
-    <entry file="file://$PROJECT_DIR$/../../../go1.11.1.linux-amd64/go/src/encoding/json/stream.go" />
-    <entry file="file://$PROJECT_DIR$/../../../go1.11.1.linux-amd64/go/src/bytes/buffer.go" />
-    <entry file="file://$PROJECT_DIR$/../../../go1.11.1.linux-amd64/go/src/crypto/cipher/cbc.go" />
-    <entry file="file://$PROJECT_DIR$/../../../go1.11.1.linux-amd64/go/src/crypto/aes/cipher.go" />
-    <entry file="file://$PROJECT_DIR$/../../../go1.11.1.linux-amd64/go/src/net/net.go" />
     <entry file="file://$PROJECT_DIR$/Wsocks/aes.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="601">
@@ -488,20 +486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WsocksServer/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2924">
-          <caret line="186" lean-forward="true" selection-start-line="186" selection-end-line="186" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Wsocks/gui.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="164" column="19" selection-start-line="164" selection-start-column="19" selection-end-line="164" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../github.com/getlantern/systray/systray_windows.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -509,10 +493,100 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/go/src/time/sleep.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Wsocks/gui.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2584">
+          <caret line="164" column="19" selection-start-line="164" selection-start-column="19" selection-end-line="164" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WsocksServer/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2924">
+          <caret line="186" selection-start-line="186" selection-end-line="186" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../github.com/google/gopacket/layers/ip4.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/go/src/net/ip.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="674" column="5" selection-start-line="674" selection-start-column="5" selection-end-line="674" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../github.com/google/gopacket/layers/ports.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WsocksKcp/KcpClient.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding>
+            <element signature="e#19#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../github.com/google/gopacket/pcap/pcap.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="137" column="30" selection-start-line="137" selection-start-column="30" selection-end-line="137" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/go/src/time/time.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="637" column="17" selection-start-line="637" selection-start-column="17" selection-end-line="637" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../github.com/google/gopacket/writer.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="49" column="58" lean-forward="true" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../github.com/google/gopacket/layers/tcp.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WsocksKcp/FakeTcp.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+          <folding>
+            <element signature="e#19#96#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
