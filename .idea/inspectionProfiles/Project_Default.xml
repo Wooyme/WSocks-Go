@@ -30,6 +30,7 @@
         <method importPath="github.com/gorilla/websocket" receiver="*Conn" name="WriteMessage" />
         <method importPath="os" receiver="*File" name="Close" />
         <method importPath="net" receiver="Conn" name="Close" />
+        <method importPath="golang.org/x/sys/windows/registry" receiver="Key" name="Close" />
       </methods>
     </inspection_tool>
   </profile>

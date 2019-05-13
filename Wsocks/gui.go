@@ -26,7 +26,7 @@ var TrayState *systray.MenuItem = nil
 func Tray() {
 	localConfigServer()
 	systray.Run(func() {
-		icon, err := Asset("assets/icon.jpg")
+		icon, err := Asset("assets/icon.ico")
 		if err != nil {
 			fmt.Printf("Err: %v \n",err)
 		}
@@ -34,7 +34,9 @@ func Tray() {
 		systray.SetTitle("Wsocks-Go")
 		TrayState = systray.AddMenuItem("Waiting","State")
 		mEdit := systray.AddMenuItem("Edit", "Edit configuration")
+		mProxyMode := systray.AddMenuItem("PAC","Switch Proxy Mode")
 		mQuit := systray.AddMenuItem("Quit", "Quit the whole app")
+		var pacMode = true
 		go func() {
 			for {
 				select {
@@ -42,6 +44,14 @@ func Tray() {
 					os.Exit(0)
 				case <-mEdit.ClickedCh:
 					openBrowser("http://localhost:1082")
+				case <-mProxyMode.ClickedCh:
+					pacMode=!pacMode
+					winAutoProxy(pacMode)
+					if pacMode {
+						mProxyMode.SetTitle("PAC")
+					}else{
+						mProxyMode.SetTitle("Global")
+					}
 				}
 			}
 		}()
@@ -70,7 +80,7 @@ func init() {
 		}
 		f.Close()
 	}
-	openBrowser("http://localhost:1082")
+	openBrowser("http://localhost:1082/config")
 }
 
 func openBrowser(url string) {
@@ -80,6 +90,7 @@ func openBrowser(url string) {
 		err = exec.Command("xdg-open", url).Start()
 	case "windows":
 		err = exec.Command("rundll32", "url.dll,FileProtocolHandler", url).Start()
+		winAutoProxy(true)
 	case "darwin":
 		err = exec.Command("open", url).Start()
 	default:
@@ -91,7 +102,14 @@ func openBrowser(url string) {
 }
 
 func localConfigServer() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/pac", func(writer http.ResponseWriter, request *http.Request) {
+		fmt.Fprint(writer, `
+			function FindProxyForURL(o,c){
+          		return "SOCKS5 127.0.0.1:1080; SOCKS 127.0.0.1:1080; DIRECT";
+        	}
+		`)
+	})
+	http.HandleFunc("/config", func(w http.ResponseWriter, r *http.Request) {
 		state:="Waiting"
 		_log:=""
 		if client!=nil {
@@ -166,9 +184,9 @@ func localConfigServer() {
 			<body>
 				<div>
 				State: %v
-				<form action="/"><input type="submit" value="refresh"></form>
+				<form action="/config"><input type="submit" value="refresh"></form>
 				<div>
-				<form action="/">
+				<form action="/config">
 					<div>
 						<label>Configuration</label>
 						<select name="config">
@@ -177,11 +195,11 @@ func localConfigServer() {
 					</div>
 					<div><input type="submit" name="confirm" value="Confirm"><input type="submit" name="delete" value="Delete"></div>
 				</form>
-				<form action="/">
-				<div><label>Host:</label><input type="text" name="host"></div>
-				<div><label>User:</label><input type="text" name="user"></div>
-				<div><label>Pass:</label><input type="text" name="pass"></div>
-				<div><input type="submit" value="Save"></div>
+				<form action="/config">
+					<div><label>Host:</label><input type="text" name="host"></div>
+					<div><label>User:</label><input type="text" name="user"></div>
+					<div><label>Pass:</label><input type="text" name="pass"></div>
+					<div><input type="submit" value="Save"></div>
 				</form>
 				<div>
 				Log
