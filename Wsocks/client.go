@@ -36,8 +36,6 @@ func (c *Client) Start(){
 		return
 	}
 	ws = conn
-	c.State = "Connected"
-	fmt.Println("Connected to remote server")
 	sock:=make(chan []byte)
 	go func() {
 		defer ws.Close()

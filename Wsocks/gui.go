@@ -26,14 +26,23 @@ var TrayState *systray.MenuItem = nil
 func Tray() {
 	localConfigServer()
 	systray.Run(func() {
-		icon, err := Asset("assets/icon.ico")
-		if err != nil {
-			fmt.Printf("Err: %v \n",err)
+		if runtime.GOOS == "windows" {
+			icon, err := Asset("assets/icon.ico")
+			if err != nil {
+				fmt.Printf("Err: %v \n", err)
+			}
+			systray.SetIcon(icon)
+		}else{
+			icon, err := Asset("assets/icon.png")
+			if err != nil {
+				fmt.Printf("Err: %v \n", err)
+			}
+			systray.SetIcon(icon)
 		}
-		systray.SetIcon(icon)
 		systray.SetTitle("Wsocks-Go")
 		TrayState = systray.AddMenuItem("Waiting","State")
 		mEdit := systray.AddMenuItem("Edit", "Edit configuration")
+
 		mProxyMode := systray.AddMenuItem("PAC","Switch Proxy Mode")
 		mQuit := systray.AddMenuItem("Quit", "Quit the whole app")
 		var pacMode = true
@@ -43,7 +52,7 @@ func Tray() {
 				case <-mQuit.ClickedCh:
 					os.Exit(0)
 				case <-mEdit.ClickedCh:
-					openBrowser("http://localhost:1082")
+					openBrowser("http://localhost:1082/config")
 				case <-mProxyMode.ClickedCh:
 					pacMode=!pacMode
 					winAutoProxy(pacMode)
@@ -176,38 +185,11 @@ func localConfigServer() {
 		for i := 0; i < len(configs); i++ {
 			str += fmt.Sprintf("<option value=\"%v\">%v:%v@%v</option>", i, configs[i].User, configs[i].Pass, configs[i].Host)
 		}
-		fmt.Fprint(w, fmt.Sprintf(`
-			<html>
-			<head>
-				<title>Wsocks-Go Configuration</title>
-			</head>
-			<body>
-				<div>
-				State: %v
-				<form action="/config"><input type="submit" value="refresh"></form>
-				<div>
-				<form action="/config">
-					<div>
-						<label>Configuration</label>
-						<select name="config">
-							%v
-						</select>
-					</div>
-					<div><input type="submit" name="confirm" value="Confirm"><input type="submit" name="delete" value="Delete"></div>
-				</form>
-				<form action="/config">
-					<div><label>Host:</label><input type="text" name="host"></div>
-					<div><label>User:</label><input type="text" name="user"></div>
-					<div><label>Pass:</label><input type="text" name="pass"></div>
-					<div><input type="submit" value="Save"></div>
-				</form>
-				<div>
-				Log
-				<div><textarea rows="10" cols="50">%v</textarea></div>
-				</div>
-			</body>
-			</html>
-		`, state,str,_log))
+		html, err := Asset("assets/config.html")
+		if err != nil {
+			fmt.Printf("Err: %v \n",err)
+		}
+		fmt.Fprint(w, fmt.Sprintf(string(html), state,str,_log))
 	})
 	go http.ListenAndServe(":1082", nil)
 }

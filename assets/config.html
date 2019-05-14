@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WSocks Configuration</title>
+    <link href="https://cdn.bootcss.com/pure/1.0.0/pure-min.css" rel="stylesheet">
+</head>
+<body>
+<div style="margin: 20px">
+    <p style="color: crimson;text-align: center">Don't press f5 to refresh/刷新不要按F5</p>
+    <div class="pure-g">
+        <div class="pure-u-1-2">
+            <div style="margin-top: 50px">
+                State/状态: %v
+                <form action="/config">
+                    <input class="pure-button pure-button-primary" type="submit" value="refresh">
+                </form>
+            </div>
+            <form action="/config" class="pure-form pure-form-stacked">
+                <div>
+                    <label>Configurations/所有配置</label>
+                    <select name="config">
+                        %v
+                    </select>
+                </div>
+                <div>
+                    <input type="submit" name="confirm" value="Confirm" class="pure-button pure-button-primary">
+                    <input type="submit" name="delete" value="Delete" class="pure-button pure-button-warning">
+                </div>
+            </form>
+        </div>
+        <div class="pure-u-1-2">
+            <label>Add Configuration/新建配置</label>
+            <form action="/config" class="pure-form pure-form-stacked">
+                <div><label>Host/主机地址:</label><input type="text" name="host"></div>
+                <div><label>User/用户名:</label><input type="text" name="user"></div>
+                <div><label>Pass/密码:</label><input type="text" name="pass"></div>
+                <div><input type="submit" value="Save" class="pure-button pure-button-primary"></div>
+            </form>
+            <div style="margin-top: 10px">
+                Log/日志
+                <div><textarea rows="10" cols="50">%v</textarea></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
