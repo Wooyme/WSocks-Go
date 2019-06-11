@@ -14,6 +14,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"sync"
 )
 type Server struct {
 	info ServerInfo
@@ -31,11 +32,11 @@ type User struct {
 	Multiple int
 	Limit int
 }
-
-var upgrader = websocket.Upgrader{} // use default options
-
-var connMap = make(map[string]net.Conn)
-
+var (
+	upgrader = websocket.Upgrader{} // use default options
+	connMap = make(map[string]net.Conn)
+	lock = sync.RWMutex{}
+)
 func ReadServerFromFile(filename string) *Server{
 	f,err:=os.Open(filename)
 	if err != nil {
@@ -137,8 +138,12 @@ func handleConnect(c chan []byte,parser Data,data *ClientConnect){
 		return
 	}
 	go func() {
-		defer delete(connMap,data.Uuid)
-		defer conn.Close()
+		defer func(){
+			lock.Lock()
+			delete(connMap,data.Uuid)
+			lock.Unlock()
+			conn.Close()
+		}()
 		for {
 			_bytes:=make([]byte,4096)
 			ln,err:=conn.Read(_bytes)
@@ -148,12 +153,16 @@ func handleConnect(c chan []byte,parser Data,data *ClientConnect){
 			c<-parser.CreateRaw(data.Uuid,_bytes[:ln])
 		}
 	}()
+	lock.RLock()
 	connMap[data.Uuid] = conn
+	lock.RUnlock()
 	c<-parser.CreateConnectSuccess(data.Uuid)
 }
 
 func handleRaw(c chan []byte,parser Data,data Raw){
+	lock.RLock()
 	conn:=connMap[data.Uuid]
+	lock.RUnlock()
 	if conn == nil {
 		c<-parser.CreateException(data.Uuid,"Connection closed")
 	}else{
@@ -165,9 +174,11 @@ func handleRaw(c chan []byte,parser Data,data Raw){
 
 func handleException(c chan []byte,parser Data,data *Exception){
 	if data == nil { return }
+	lock.RLock()
 	if conn:= connMap[data.Uuid];conn != nil {
 		conn.Close()
 	}
+	lock.RUnlock()
 }
 
 func handleDnsQuery(c chan []byte,parser Data,data *DnsQuery) {

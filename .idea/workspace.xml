@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8a05c9d-a4a5-47f0-bca1-51fa14e2b18a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/config.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Wsocks-Go.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Wsocks-Go.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wsocks/bindata.go" beforeDir="false" afterPath="$PROJECT_DIR$/Wsocks/bindata.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wsocks/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/Wsocks/client.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wsocks/gui.go" beforeDir="false" afterPath="$PROJECT_DIR$/Wsocks/gui.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WsocksKcp/FakeTcp.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WsocksKcp/KcpClient.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WsocksServer/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/WsocksServer/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/release/WSocks-Go_linux_amd64" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/release/WSocks-Go_windows_386.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/release/WSocks-Go_windows_amd64.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +22,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+            <state relative-caret-position="102">
+              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WsocksServer/server.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1173">
+              <caret line="180" column="18" selection-start-line="180" selection-start-column="18" selection-end-line="180" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Wsocks/socks5.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="50" column="25" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="25" />
+              <folding>
+                <element signature="e#16#114#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -31,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wsocks/gui.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="791">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
+            <state relative-caret-position="918">
+              <caret line="66" selection-start-line="66" selection-end-line="66" />
             </state>
           </provider>
         </entry>
@@ -40,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wsocks/client.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="93" column="13" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
+            <state relative-caret-position="1547">
+              <caret line="92" column="12" selection-start-line="92" selection-start-column="12" selection-end-line="92" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -86,8 +107,6 @@
         <option value="$PROJECT_DIR$/WsocksServer/data.go" />
         <option value="$PROJECT_DIR$/Wsocks/data.go" />
         <option value="$PROJECT_DIR$/Wsocks/socks5.go" />
-        <option value="$PROJECT_DIR$/WsocksServer/server.go" />
-        <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/WsocksKcp/KcpClient.go" />
         <option value="$PROJECT_DIR$/WsocksKcp/FakeTcp.go" />
         <option value="$PROJECT_DIR$/Wsocks/gui_windows.go" />
@@ -96,6 +115,8 @@
         <option value="$PROJECT_DIR$/assets/config.html" />
         <option value="$PROJECT_DIR$/Wsocks/client.go" />
         <option value="$PROJECT_DIR$/Wsocks/gui.go" />
+        <option value="$PROJECT_DIR$/WsocksServer/server.go" />
+        <option value="$PROJECT_DIR$/main.go" />
       </list>
     </option>
   </component>
@@ -109,6 +130,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -119,7 +141,7 @@
             <path>
               <item name="WSocks-Go" type="b2602c69:ProjectViewProjectNode" />
               <item name="WSocks-Go" type="462c0819:PsiDirectoryNode" />
-              <item name="release" type="462c0819:PsiDirectoryNode" />
+              <item name="Wsocks" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="WSocks-Go" type="b2602c69:ProjectViewProjectNode" />
@@ -129,7 +151,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -202,7 +223,7 @@
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1366" height="726" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2511381" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25493172" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -214,7 +235,7 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924472" weight="0.32998326" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49848256" weight="0.52348995" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49848256" visible="true" weight="0.52348995" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5015175" side_tool="true" weight="0.52348995" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -304,13 +325,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WsocksServer/aes.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/WsocksServer/aes.go" />
     <entry file="file://$PROJECT_DIR$/../github.com/gorilla/websocket/conn.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
@@ -322,16 +337,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="692" selection-start-line="692" selection-end-line="692" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Wsocks/socks5.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="123" column="13" lean-forward="true" selection-start-line="123" selection-start-column="13" selection-end-line="123" selection-end-column="13" />
-          <folding>
-            <element signature="e#16#114#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -363,13 +368,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WsocksServer/data.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="20" selection-start-column="20" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/WsocksServer/data.go" />
     <entry file="file:///usr/local/go/src/net/http/request.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -412,16 +411,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WsocksKcp/KcpClient.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding>
-            <element signature="e#19#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/WsocksKcp/KcpClient.go" />
     <entry file="file://$PROJECT_DIR$/../github.com/google/gopacket/pcap/pcap.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
@@ -450,16 +440,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WsocksKcp/FakeTcp.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-          <folding>
-            <element signature="e#19#96#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/WsocksKcp/FakeTcp.go" />
     <entry file="file://$PROJECT_DIR$/Wsocks/bindata.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-102">
@@ -521,13 +502,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Wsocks/gui.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="791">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Wsocks/gui_others.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -539,13 +513,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WsocksServer/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="186" selection-start-line="186" selection-end-line="186" />
         </state>
       </provider>
     </entry>
@@ -573,24 +540,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Wsocks/client.go">
+    <entry file="file://$PROJECT_DIR$/Wsocks/data.go" />
+    <entry file="file://$PROJECT_DIR$/Wsocks/gui.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="93" column="13" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
+        <state relative-caret-position="918">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Wsocks/data.go">
+    <entry file="file://$PROJECT_DIR$/Wsocks/client.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        <state relative-caret-position="1547">
+          <caret line="92" column="12" selection-start-line="92" selection-start-column="12" selection-end-line="92" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Wsocks/socks5.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="50" column="25" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="25" />
+          <folding>
+            <element signature="e#16#114#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WsocksServer/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="180" column="18" selection-start-line="180" selection-start-column="18" selection-end-line="180" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        <state relative-caret-position="102">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
         </state>
       </provider>
     </entry>
