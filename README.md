@@ -1,4 +1,4 @@
-WSocks-GO
+WSocks-GO (Die)
 =======
 这里是WSocks的go版本。  
 *之后应该不会再更新WSocks的Kotlin版本了，这种小工具跑在JVM上还是太脑瘫了一点*
