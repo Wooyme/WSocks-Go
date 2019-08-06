@@ -1,7 +1,12 @@
 WSocks-GO
 =======
 这里是WSocks的go版本。  
-之后应该不会再更新WSocks的Kotlin版本了，这种小工具跑在JVM上还是太脑瘫了一点。  
+*之后应该不会再更新WSocks的Kotlin版本了，这种小工具跑在JVM上还是太脑瘫了一点*
+
+2019-8-06：
+万万没想到，随着Graalvm19.1.1的发布以及我的许多努力，Wsocks的Kotlin版本已经成功移植。带**GUI**的的客户端运行内存也可以维持在60m以下，而压缩后的客户端体积也可以在20m以下，所以这个Go的版本就GG了。
+
+目前Wsocks Native还只支持Linux，可能过几天就会全平台吧。
 
 Server
 ----
